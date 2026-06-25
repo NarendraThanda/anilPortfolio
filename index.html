@@ -202,6 +202,10 @@
             padding: 0.5rem;
         }
         
+        .close-btn {
+            display: none;
+        }
+        
         /* ========== HERO SECTION ========== */
         #hero {
             min-height: 100vh;
@@ -944,6 +948,24 @@
                 display: block;
             }
             
+            .close-btn {
+                display: block;
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                background: none;
+                border: none;
+                color: var(--text-light);
+                font-size: 2.5rem;
+                cursor: pointer;
+                line-height: 1;
+                transition: color 0.3s ease;
+            }
+            
+            .close-btn:hover {
+                color: var(--accent);
+            }
+            
             .hero-title {
                 font-size: 2.2rem;
             }
@@ -1027,6 +1049,7 @@
             </div>
             <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
             <ul class="nav-links">
+                <button class="close-btn" aria-label="Close menu">&times;</button>
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
@@ -1273,11 +1296,16 @@
     <script>
         // ========== MOBILE MENU TOGGLE ==========
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const closeBtn = document.querySelector('.close-btn');
         const navLinks = document.querySelector('.nav-links');
         const navLinkItems = document.querySelectorAll('.nav-links a');
         
         mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            navLinks.classList.add('active');
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
         });
         
         // Close mobile menu when clicking on a link
